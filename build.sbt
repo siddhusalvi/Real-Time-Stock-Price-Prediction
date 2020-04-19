@@ -15,4 +15,5 @@ libraryDependencies += "org.apache.spark" %% "spark-core" % "3.0.0-preview"
 libraryDependencies += "org.apache.spark" %% "spark-sql" % "3.0.0-preview"
 
 // https://mvnrepository.com/artifact/org.apache.spark/spark-streaming
-libraryDependencies += "org.apache.spark" %% "spark-streaming" % "3.0.0-preview" % "provided"
+libraryDependencies += "org.apache.spark" %% "spark-streaming" % "3.0.0-preview2"
+
