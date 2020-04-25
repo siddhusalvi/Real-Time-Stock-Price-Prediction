@@ -5,7 +5,7 @@ import scala.io.Source
 
 object stockprediction extends Serializable {
   def main(args: Array[String]): Unit = {
-    try {
+//    try {
       val spark = SparkSession.builder().master("local[2]").appName("StreamingApp").getOrCreate()
       val sc = spark.sparkContext
       val stm = new StreamingContext(sc, Seconds(20))
@@ -31,10 +31,13 @@ object stockprediction extends Serializable {
           for (line <- file) {
             file_data += line
           }
-          print("list : ")
-          command += " " + file_data
-          print(command)
-          var dst: List[String] = List(file_data)
+//          val vector = file_data.split(" ").toList
+//          println("list is  ")
+//          println(vector.mkString(" "))
+//          print("list : ")
+//          command += " " + file_data
+//          print(command)
+          val dst = Array(file_data)
           //print(lst.mkString(" ")+"|")
           val dta = sc.parallelize(dst)
           val op = dta.pipe(command)
@@ -46,11 +49,11 @@ object stockprediction extends Serializable {
       line.print()
       stm.start()
       stm.awaitTermination()
-    } catch {
-      case exception1: NoSuchMethodError => println(exception1)
-      case exception2: ClassNotFoundException => println(exception2)
-      case _ => println("Unknown Error occured!")
-    }
+//    } catch {
+//      case exception1: NoSuchMethodError => println(exception1)
+//      case exception2: ClassNotFoundException => println(exception2)
+//      case _ => println("Unknown Error occured!")
+//    }
   }
 }
 //115.1600 115.7000 114.7100 114.7700
