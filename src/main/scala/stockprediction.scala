@@ -27,8 +27,7 @@ object stockprediction {
         val fileExists = fs.exists(new Path(path + "\\"+spark_op))
         if (fileExists) {
           var file_data = getFileContent(path + "\\" + spark_op)
-          command  += " " + file_data
-          val list = Array(" ")
+          val list = Array(file_data)
           val operation = sc.parallelize(list)
           val std_op = operation.pipe(command)
           val output = std_op.collect()
@@ -55,6 +54,5 @@ object stockprediction {
     file_data
   }
 }
-
 
 
